@@ -1,11 +1,11 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.6.1
-Release:	1
+Version:	3.6.2
+Release:	2
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	6f802981c16238228c544360bad2cc49
+# Source0-md5:	a50917d9339766ebb77e0f5732024269
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf
@@ -54,6 +54,7 @@ Requires:	mutter
 Requires:	nautilus
 Requires:	telepathy-logger
 Requires:	telepathy-mission-control
+Requires:	telepathy-service
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_libdir}/%{name}
@@ -137,14 +138,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/gnome-shell/Shell-0.1.typelib
 %{_libdir}/gnome-shell/ShellJS-0.1.typelib
 %{_libdir}/gnome-shell/St-1.0.typelib
-%{_datadir}/GConf/gsettings/gnome-shell-overrides.convert
 %{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
 %{_datadir}/gnome-shell
-%{_desktopdir}/gnome-shell.desktop
+%{_desktopdir}/evolution-calendar.desktop
 %{_desktopdir}/gnome-shell-extension-prefs.desktop
+%{_desktopdir}/gnome-shell.desktop
 %{_mandir}/man1/gnome-shell.1*
 
 %files apidocs
