@@ -1,15 +1,16 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.6.3.1
-Release:	1
+Version:	3.8.0.1
+Release:	2
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.6/%{name}-%{version}.tar.xz
-# Source0-md5:	6d00d16fd54fa0d0e5d4b3a7dcad0bfe
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.8/%{name}-%{version}.tar.xz
+# Source0-md5:	f6511b663a9e3eda6f640bfab7a8fa08
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	caribou-devel
 BuildRequires:	clutter-devel
 BuildRequires:	dbus-glib-devel
 BuildRequires:	evolution-data-server-devel
@@ -18,6 +19,7 @@ BuildRequires:	gcr-devel
 BuildRequires:	gettext-devel
 BuildRequires:	gjs-devel
 BuildRequires:	gnome-bluetooth-devel
+BuildRequires:	gnome-control-center-devel
 BuildRequires:	gnome-desktop-devel
 BuildRequires:	gnome-menus-devel
 BuildRequires:	gobject-introspection-devel
@@ -32,7 +34,7 @@ BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libsoup-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	mutter-devel >= 3.4.1
+BuildRequires:	mutter-devel >= 3.8.0
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	pulseaudio-devel
@@ -47,8 +49,8 @@ Requires:	at-spi2-atk
 Requires:	caribou
 Requires:	evolution-data-server
 Requires:	gjs
+Requires:	gnome-control-center
 Requires:	gnome-menus
-Requires:	gnome-settings-daemon
 Requires:	gsettings-desktop-schemas
 Requires:	mutter
 Requires:	nautilus
@@ -86,6 +88,13 @@ gnome-shell plugin for WWW browsers.
 %prep
 %setup -q
 
+# kill gnome common deps
+%{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
+    -i -e 's/GNOME_MAINTAINER_MODE_DEFINES//g'	\
+    -i -e 's/GNOME_COMMON_INIT//g'		\
+    -i -e 's/GNOME_CXX_WARNINGS.*//g'		\
+    -i -e 's/GNOME_DEBUG_CHECK//g' configure.ac
+
 %build
 %{__intltoolize}
 %{__libtoolize}
@@ -103,7 +112,7 @@ gnome-shell plugin for WWW browsers.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/gnome-shell/{extensions,search-providers}
+install -d $RPM_BUILD_ROOT%{_datadir}/gnome-shell/{extensions,modes,search-providers}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -128,21 +137,38 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gnome-shell-extension-prefs
 %attr(755,root,root) %{_bindir}/gnome-shell-extension-tool
 %attr(755,root,root) %{_bindir}/gnome-shell-perf-tool
+
 %dir %{_libexecdir}
 %attr(755,root,root) %{_libexecdir}/gnome-shell-calendar-server
 %attr(755,root,root) %{_libexecdir}/gnome-shell-hotplug-sniffer
 %attr(755,root,root) %{_libexecdir}/gnome-shell-perf-helper
+
 %attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell.so
 %attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell-js.so
 %{_libdir}/gnome-shell/Gvc-1.0.typelib
 %{_libdir}/gnome-shell/Shell-0.1.typelib
 %{_libdir}/gnome-shell/ShellJS-0.1.typelib
 %{_libdir}/gnome-shell/St-1.0.typelib
+
 %{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
+
+%{_datadir}/gnome-control-center/keybindings/50-gnome-shell-screenshot.xml
+%{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
+
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
-%{_datadir}/gnome-shell
+
+%dir %{_datadir}/gnome-shell
+%{_datadir}/gnome-shell/theme
+%{_datadir}/gnome-shell/js
+%{_datadir}/gnome-shell/modes
+%{_datadir}/gnome-shell/extensions
+%{_datadir}/gnome-shell/search-providers
+%{_datadir}/gnome-shell/wanda.png
+
 %{_desktopdir}/evolution-calendar.desktop
 %{_desktopdir}/gnome-shell-extension-prefs.desktop
 %{_desktopdir}/gnome-shell.desktop
