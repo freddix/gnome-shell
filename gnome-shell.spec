@@ -1,11 +1,11 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.8.0.1
-Release:	2
+Version:	3.8.2
+Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	f6511b663a9e3eda6f640bfab7a8fa08
+# Source0-md5:	0fb61fa065d580163c041ed824c3b2bb
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf
@@ -34,7 +34,7 @@ BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libsoup-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	mutter-devel >= 3.8.0
+BuildRequires:	mutter-devel >= 3.8.2
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	pulseaudio-devel
@@ -150,11 +150,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/gnome-shell/ShellJS-0.1.typelib
 %{_libdir}/gnome-shell/St-1.0.typelib
 
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
 %{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
-%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
-%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
 
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-screenshot.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
