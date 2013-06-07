@@ -1,11 +1,12 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.8.2
+Version:	3.8.3
 Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	0fb61fa065d580163c041ed824c3b2bb
+# Source0-md5:	8c317621e5621f2eb2bc21f1ec9962b7
+Source1:	%{name}-nm-libexecdir.patch
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-devel
 BuildRequires:	autoconf
@@ -34,7 +35,7 @@ BuildRequires:	libgnome-keyring-devel
 BuildRequires:	libsoup-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	mutter-devel >= 3.8.2
+BuildRequires:	mutter-devel >= 3.8.3
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	pulseaudio-devel
@@ -87,6 +88,8 @@ gnome-shell plugin for WWW browsers.
 
 %prep
 %setup -q
+
+%{__sed} "s|LIBDIR|%{_libdir}|" %{SOURCE1} | %{__patch} -p1
 
 # kill gnome common deps
 %{__sed} -i -e 's/GNOME_COMPILE_WARNINGS.*//g'	\
