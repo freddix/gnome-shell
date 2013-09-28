@@ -1,41 +1,41 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.8.4
+Version:	3.10.0.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.8/%{name}-%{version}.tar.xz
-# Source0-md5:	b5be396879a4b5bc98b3e9e4ac8d1447
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.10/%{name}-%{version}.tar.xz
+# Source0-md5:	70a9b2008caf11cfc43dd21457c26c95
 Source1:	%{name}-nm-libexecdir.patch
 URL:		http://live.gnome.org/GnomeShell
-BuildRequires:	NetworkManager-devel
+BuildRequires:	NetworkManager-applet-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	caribou-devel
-BuildRequires:	clutter-devel
+BuildRequires:	clutter-devel >= 0.16.0
 BuildRequires:	dbus-glib-devel
-BuildRequires:	evolution-data-server-devel
-BuildRequires:	folks-devel
-BuildRequires:	gcr-devel
+BuildRequires:	evolution-data-server-devel >= 3.10.0
+BuildRequires:	folks-devel >= 0.9.5
+BuildRequires:	gcr-devel >= 3.10.0
 BuildRequires:	gettext-devel
-BuildRequires:	gjs-devel
-BuildRequires:	gnome-bluetooth-devel
-BuildRequires:	gnome-control-center-devel
-BuildRequires:	gnome-desktop-devel
+BuildRequires:	gjs-devel >= 1.38.0
+BuildRequires:	gnome-bluetooth-devel >= 3.10.0
+BuildRequires:	gnome-control-center-devel >= 3.10.0
+BuildRequires:	gnome-desktop-devel >= 3.10.0
 BuildRequires:	gnome-menus-devel
-BuildRequires:	gobject-introspection-devel
-BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gstreamer-plugins-base-devel
-BuildRequires:	gtk+3-devel
+BuildRequires:	gobject-introspection-devel >= 1.38.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.10.0
+BuildRequires:	gstreamer-plugins-base-devel >= 1.2
+BuildRequires:	gtk+3-devel >= 3.10.0
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
 BuildRequires:	libcanberra-devel
 BuildRequires:	libcroco-devel
-BuildRequires:	libgnome-keyring-devel
-BuildRequires:	libsoup-devel
+BuildRequires:	libgnome-keyring-devel >= 3.10.0
+BuildRequires:	libsoup-devel >= 2.44.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	mutter-devel >= 3.8.3
+BuildRequires:	mutter-devel >= 3.10.0.1
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	pulseaudio-devel
@@ -48,13 +48,13 @@ Requires(post,postun):	glib-gio-gsettings
 Requires:	accountsservice
 Requires:	at-spi2-atk
 Requires:	caribou
-Requires:	evolution-data-server
-Requires:	gjs
-Requires:	gnome-control-center
+Requires:	evolution-data-server >= 3.10.0
+Requires:	gjs >= 1.38.0
+Requires:	gnome-control-center >= 3.10.0
 Requires:	gnome-menus
-Requires:	gsettings-desktop-schemas
-Requires:	mutter
-Requires:	nautilus
+Requires:	gsettings-desktop-schemas >= 3.10.0
+Requires:	mutter >= 3.10.0.1
+Requires:	nautilus >= 3.10.0
 Requires:	telepathy-logger
 Requires:	telepathy-mission-control
 Requires:	telepathy-service
@@ -146,11 +146,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/gnome-shell-hotplug-sniffer
 %attr(755,root,root) %{_libexecdir}/gnome-shell-perf-helper
 
-%attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell.so
 %attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell-js.so
+%attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell-menu.so
+%attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell.so
 %{_libdir}/gnome-shell/Gvc-1.0.typelib
 %{_libdir}/gnome-shell/Shell-0.1.typelib
 %{_libdir}/gnome-shell/ShellJS-0.1.typelib
+%{_libdir}/gnome-shell/ShellMenu-0.1.typelib
 %{_libdir}/gnome-shell/St-1.0.typelib
 
 %{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
@@ -160,7 +162,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
 
-%{_datadir}/gnome-control-center/keybindings/50-gnome-shell-screenshot.xml
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
 
 %{_datadir}/glib-2.0/schemas/org.gnome.shell.gschema.xml
