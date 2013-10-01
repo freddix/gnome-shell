@@ -1,7 +1,7 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
 Version:	3.10.0.1
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.10/%{name}-%{version}.tar.xz
@@ -45,6 +45,8 @@ BuildRequires:	systemd-devel
 BuildRequires:	telepathy-glib-devel
 BuildRequires:	telepathy-logger-devel
 Requires(post,postun):	glib-gio-gsettings
+# g-is nm-gtk
+Requires:	NetworkManager-applet-libs
 Requires:	accountsservice
 Requires:	at-spi2-atk
 Requires:	caribou
