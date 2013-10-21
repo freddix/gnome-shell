@@ -1,11 +1,11 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.10.0.1
-Release:	2
+Version:	3.10.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	70a9b2008caf11cfc43dd21457c26c95
+# Source0-md5:	efcdecf3fff971c50b008ac75895b7ab
 Source1:	%{name}-nm-libexecdir.patch
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-applet-devel
