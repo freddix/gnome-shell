@@ -1,41 +1,41 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.10.4
-Release:	2
+Version:	3.12.0
+Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.10/%{name}-%{version}.tar.xz
-# Source0-md5:	f69f0b3985ae8e6da0b3e61f6acedc5f
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.12/%{name}-%{version}.tar.xz
+# Source0-md5:	8071e8531e82b8e56eedf57e65179594
 Source1:	%{name}-nm-libexecdir.patch
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-applet-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	caribou-devel
-BuildRequires:	clutter-devel >= 0.16.0
+BuildRequires:	clutter-devel >= 1.18.0
 BuildRequires:	dbus-glib-devel
-BuildRequires:	evolution-data-server-devel >= 3.10.0
-BuildRequires:	folks-devel >= 0.9.5
-BuildRequires:	gcr-devel >= 3.10.0
+BuildRequires:	evolution-data-server-devel >= 3.12.0
+BuildRequires:	folks-devel >= 0.9.6
+BuildRequires:	gcr-devel >= 3.12.0
 BuildRequires:	gettext-devel
-BuildRequires:	gjs-devel >= 1.38.0
-BuildRequires:	gnome-bluetooth-devel >= 3.10.0
-BuildRequires:	gnome-control-center-devel >= 3.10.0
-BuildRequires:	gnome-desktop-devel >= 3.10.0
+BuildRequires:	gjs-devel >= 1.40.0
+BuildRequires:	gnome-bluetooth-devel >= 3.12.0
+BuildRequires:	gnome-control-center-devel >= 3.12.0
+BuildRequires:	gnome-desktop-devel >= 3.12.0
 BuildRequires:	gnome-menus-devel
-BuildRequires:	gobject-introspection-devel >= 1.38.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.10.0
+BuildRequires:	gobject-introspection-devel >= 1.40.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.12.0
 BuildRequires:	gstreamer-plugins-base-devel >= 1.2
-BuildRequires:	gtk+3-devel >= 3.10.0
+BuildRequires:	gtk+3-devel >= 3.12.0
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
 BuildRequires:	libcanberra-devel
 BuildRequires:	libcroco-devel
-BuildRequires:	libgnome-keyring-devel >= 3.10.0
-BuildRequires:	libsoup-devel >= 2.44.0
+BuildRequires:	libgnome-keyring-devel >= 3.12.0
+BuildRequires:	libsoup-devel >= 2.46.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	mutter-devel >= 3.10.4
+BuildRequires:	mutter-devel >= 3.12.0
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	pulseaudio-devel
@@ -50,13 +50,13 @@ Requires:	NetworkManager-applet-libs
 Requires:	accountsservice
 Requires:	at-spi2-atk
 Requires:	caribou
-Requires:	evolution-data-server >= 3.10.0
-Requires:	gjs >= 1.38.0
-Requires:	gnome-control-center >= 3.10.0
+Requires:	evolution-data-server >= 3.12.0
+Requires:	gjs >= 1.40.0
+Requires:	gnome-control-center >= 3.12.0
 Requires:	gnome-menus
-Requires:	gsettings-desktop-schemas >= 3.10.0
-Requires:	mutter >= 3.10.4
-Requires:	nautilus >= 3.10.0
+Requires:	gsettings-desktop-schemas >= 3.12.0
+Requires:	mutter >= 3.12.0
+Requires:	nautilus >= 3.12.0
 Requires:	telepathy-logger
 Requires:	telepathy-mission-control
 Requires:	telepathy-service
@@ -170,11 +170,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %dir %{_datadir}/gnome-shell
 %{_datadir}/gnome-shell/theme
-%{_datadir}/gnome-shell/js
 %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/extensions
 %{_datadir}/gnome-shell/search-providers
-%{_datadir}/gnome-shell/wanda.png
 
 %{_desktopdir}/evolution-calendar.desktop
 %{_desktopdir}/gnome-shell-extension-prefs.desktop
