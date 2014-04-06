@@ -1,7 +1,7 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
 Version:	3.12.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.12/%{name}-%{version}.tar.xz
@@ -71,6 +71,13 @@ windows and launching applications. GNOME Shell takes advantage of the
 capabilities of modern graphics hardware and introduces innovative
 user interface concepts to provide a delightful and easy to use
 experience.
+
+%package devel
+Summary:	GNOME Shell API documentation
+Group:		Development/Libraries
+
+%description devel
+This package provides GNOME Shell development files.
 
 %package apidocs
 Summary:	GNOME Shell API documentation
@@ -157,10 +164,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/gnome-shell/ShellMenu-0.1.typelib
 %{_libdir}/gnome-shell/St-1.0.typelib
 
-%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
-%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
-%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider.xml
-%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
 
@@ -183,6 +186,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_gtkdocdir}/shell
 %{_gtkdocdir}/st
+
+%files devel
+%defattr(644,root,root,755)
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider.xml
+%{_datadir}/dbus-1/interfaces/org.gnome.ShellSearchProvider2.xml
 
 %files -n browser-plugin-%{name}
 %defattr(644,root,root,755)
