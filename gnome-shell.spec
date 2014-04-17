@@ -1,11 +1,11 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.12.0
-Release:	2
+Version:	3.12.1
+Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	8071e8531e82b8e56eedf57e65179594
+# Source0-md5:	40c2a3096f6c8a3ea845ac9bb2c5f9bd
 Source1:	%{name}-nm-libexecdir.patch
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-applet-devel
@@ -130,7 +130,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}/gnome-shell/{extensions,modes,search-provi
 	DESTDIR=$RPM_BUILD_ROOT \
 	mozillalibdir=%{_libdir}/browser-plugins
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/gnome-shell/*.la
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*/*.la
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/GConf
 
 %find_lang %{name}
 
