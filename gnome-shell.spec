@@ -1,7 +1,7 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
 Version:	3.14.0
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Window Managers
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.14/%{name}-%{version}.tar.xz
@@ -60,6 +60,7 @@ Requires:	nautilus >= 3.14.0
 Requires:	telepathy-logger
 Requires:	telepathy-mission-control
 Requires:	telepathy-service
+Requires:	unzip
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_libdir}/%{name}
@@ -115,11 +116,10 @@ gnome-shell plugin for WWW browsers.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-schemas-compile	\
 	--disable-silent-rules		\
 	--disable-static		\
-	--with-ca-certificates=/etc/certs/ca-certificates.crt	\
-	--with-html-dir=%{_gtkdocdir}	\
-	--with-systemd
+	--with-html-dir=%{_gtkdocdir}
 %{__make} -j1
 
 %install
