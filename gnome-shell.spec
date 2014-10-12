@@ -1,41 +1,41 @@
 Summary:	Window manager and application launcher for GNOME
 Name:		gnome-shell
-Version:	3.12.1
+Version:	3.14.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Window Managers
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.12/%{name}-%{version}.tar.xz
-# Source0-md5:	40c2a3096f6c8a3ea845ac9bb2c5f9bd
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-shell/3.14/%{name}-%{version}.tar.xz
+# Source0-md5:	403d930632dfa60ddc92779992891938
 Source1:	%{name}-nm-libexecdir.patch
 URL:		http://live.gnome.org/GnomeShell
 BuildRequires:	NetworkManager-applet-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	caribou-devel
-BuildRequires:	clutter-devel >= 1.18.0
+BuildRequires:	clutter-devel >= 1.20.0
 BuildRequires:	dbus-glib-devel
 BuildRequires:	evolution-data-server-devel >= 3.12.0
-BuildRequires:	folks-devel >= 0.9.6
-BuildRequires:	gcr-devel >= 3.12.0
+BuildRequires:	folks-devel >= 0.10.0
+BuildRequires:	gcr-devel >= 3.14.0
 BuildRequires:	gettext-devel
-BuildRequires:	gjs-devel >= 1.40.0
-BuildRequires:	gnome-bluetooth-devel >= 3.12.0
-BuildRequires:	gnome-control-center-devel >= 3.12.0
-BuildRequires:	gnome-desktop-devel >= 3.12.0
+BuildRequires:	gjs-devel >= 1.42.0
+BuildRequires:	gnome-bluetooth-devel >= 3.14.0
+BuildRequires:	gnome-control-center-devel >= 3.14.0
+BuildRequires:	gnome-desktop-devel >= 3.14.0
 BuildRequires:	gnome-menus-devel
-BuildRequires:	gobject-introspection-devel >= 1.40.0
-BuildRequires:	gsettings-desktop-schemas-devel >= 3.12.0
-BuildRequires:	gstreamer-plugins-base-devel >= 1.2
-BuildRequires:	gtk+3-devel >= 3.12.0
+BuildRequires:	gobject-introspection-devel >= 1.42.0
+BuildRequires:	gsettings-desktop-schemas-devel >= 3.14.0
+BuildRequires:	gstreamer-plugins-base-devel >= 1.4.0
+BuildRequires:	gtk+3-devel >= 3.14.0
 BuildRequires:	intltool
 BuildRequires:	json-glib-devel
 BuildRequires:	libcanberra-devel
 BuildRequires:	libcroco-devel
 BuildRequires:	libgnome-keyring-devel >= 3.12.0
-BuildRequires:	libsoup-devel >= 2.46.0
+BuildRequires:	libsoup-devel >= 2.48.0
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
-BuildRequires:	mutter-devel >= 3.12.0
+BuildRequires:	mutter-devel >= 3.14.0
 BuildRequires:	pkg-config
 BuildRequires:	polkit-devel
 BuildRequires:	pulseaudio-devel
@@ -51,12 +51,12 @@ Requires:	accountsservice
 Requires:	at-spi2-atk
 Requires:	caribou
 Requires:	evolution-data-server >= 3.12.0
-Requires:	gjs >= 1.40.0
-Requires:	gnome-control-center >= 3.12.0
+Requires:	gjs >= 1.42.0
+Requires:	gnome-control-center >= 3.14.0
 Requires:	gnome-menus
-Requires:	gsettings-desktop-schemas >= 3.12.0
-Requires:	mutter >= 3.12.0
-Requires:	nautilus >= 3.12.0
+Requires:	gsettings-desktop-schemas >= 3.14.0
+Requires:	mutter >= 3.14.0
+Requires:	nautilus >= 3.14.0
 Requires:	telepathy-logger
 Requires:	telepathy-mission-control
 Requires:	telepathy-service
@@ -155,6 +155,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/gnome-shell-calendar-server
 %attr(755,root,root) %{_libexecdir}/gnome-shell-hotplug-sniffer
 %attr(755,root,root) %{_libexecdir}/gnome-shell-perf-helper
+%attr(755,root,root) %{_libexecdir}/gnome-shell-portal-helper
 
 %attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell-js.so
 %attr(755,root,root) %{_libdir}/gnome-shell/libgnome-shell-menu.so
@@ -167,6 +168,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_datadir}/dbus-1/services/org.gnome.Shell.CalendarServer.service
 %{_datadir}/dbus-1/services/org.gnome.Shell.HotplugSniffer.service
+%{_datadir}/dbus-1/services/org.gnome.Shell.PortalHelper.service
 
 %{_datadir}/gnome-control-center/keybindings/50-gnome-shell-system.xml
 
@@ -177,10 +179,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-shell/modes
 %{_datadir}/gnome-shell/extensions
 %{_datadir}/gnome-shell/search-providers
+%{_datadir}/gnome-shell/perf-background.xml
 
 %{_desktopdir}/evolution-calendar.desktop
 %{_desktopdir}/gnome-shell-extension-prefs.desktop
+%{_desktopdir}/gnome-shell-wayland.desktop
 %{_desktopdir}/gnome-shell.desktop
+%{_desktopdir}/org.gnome.Shell.PortalHelper.desktop
 %{_mandir}/man1/gnome-shell.1*
 
 %files apidocs
